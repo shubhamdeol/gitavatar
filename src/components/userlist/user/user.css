@@ -1,0 +1,23 @@
+.UserTile{
+    background-color: rgb(206, 197, 197);
+    width: 280px;
+    height: 470px;
+    margin-bottom: 20px;
+       
+}
+
+.Avatar{
+    max-width: 280px;
+    max-height: 280px;
+    background-color: rgb(56, 165, 42);
+}
+
+.Avatar img{
+    width: 100%;
+    width: 100%;
+}
+
+.Desc{
+    padding: 5px 20px;
+    box-sizing: border-box;
+}

@@ -1,0 +1,11 @@
+.TilesWrapper {
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 95%;
+}
+
+.TilesWrapper h1{
+    color: rgba(184, 46, 99, 0.979);
+}
