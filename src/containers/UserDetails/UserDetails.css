@@ -1,4 +1,19 @@
 .Detail {
-    width: 50%;
+    width: 80%;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Desc {
+    width: 500px;
+}
+
+.FlexRepo{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+    background-color: #eee;
+    flex-wrap: wrap;
 }

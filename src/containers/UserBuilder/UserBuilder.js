@@ -1,43 +1,45 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axiosInstance from '../../axios';
 import UserList from '../../components/userlist/userlist';
 import Spinner from '../../UI/Spinner/Spinner';
 import Aux from '../../hoc/Aux/Aux';
+import globalErrorHandler from '../../hoc/globalErrorHandler/globalErrorHandler';
+import { connect } from 'react-redux';
+import * as actions from '../../store/action/actions';
+
 class UserBuilder extends Component {
-
-    state = {
-        usersData: ""
-    }
-
     componentDidMount() {
-        axios.get("/users")
-            .then(res => {
-                this.setState(
-                    {
-                        usersData: res.data
-                    }
-                )
-            })
+        this.props.onStartFetchUsers();
     }
 
-    userDetailHandler = (login) => {
-        
+    userDetailHandler = (login) => {        
             this.props.history.push({
                 pathname: "/users/" + login
             })
     }
     render() {
-
-        const users = this.state.usersData ? <UserList clicked={this.userDetailHandler} users = {this.state.usersData} /> : <Spinner />
+        const users = this.props.userDetails
+                     ? <UserList clicked={this.userDetailHandler} users = {this.props.userDetails} /> 
+                     : <Spinner />
 
         return (
-            <Aux>
+            <Aux>       
                 {users}
             </Aux>
         )
     }
 }
 
- 
+const mapStateToProps = (state) => {
+    return {
+        userDetails: state.users.userdata
+    }
+}
 
-export default UserBuilder;
+const mapActionToProps = ( dispatch ) => {
+    return {
+        onStartFetchUsers: () => dispatch(actions.onFetchUserInit()) 
+    }
+}
+
+export default connect(mapStateToProps, mapActionToProps)(globalErrorHandler(UserBuilder, axiosInstance));

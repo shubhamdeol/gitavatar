@@ -1,0 +1,10 @@
+.Suggestions li{
+    list-style: none;
+    color: green;
+  
+}
+
+.Suggestions a {
+    text-decoration: none;
+    color: whitesmoke;
+}
